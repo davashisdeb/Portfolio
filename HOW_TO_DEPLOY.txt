@@ -1,0 +1,133 @@
+============================================================
+  DAVASHIS DEB — Portfolio Deployment Guide
+  Deploy to GitHub Pages (FREE, with public URL)
+============================================================
+
+YOUR FINAL URL WILL BE:
+  https://YOUR-GITHUB-USERNAME.github.io/portfolio/
+
+============================================================
+STEP 1: INSTALL GIT (if not installed)
+============================================================
+Download from: https://git-scm.com/download/win
+Install with default settings.
+
+============================================================
+STEP 2: CREATE A GITHUB ACCOUNT
+============================================================
+Go to: https://github.com
+Sign up with your email.
+
+============================================================
+STEP 3: CREATE A NEW REPOSITORY
+============================================================
+1. On GitHub click the green "New" button
+2. Repository name: portfolio
+3. Keep it PUBLIC (required for free GitHub Pages)
+4. Do NOT check "Add README"
+5. Click "Create repository"
+
+============================================================
+STEP 4: PUSH YOUR FILES
+============================================================
+Open a terminal/Git Bash in your portfolio folder and run:
+
+  git init
+  git add .
+  git commit -m "Initial portfolio"
+  git branch -M main
+  git remote add origin https://github.com/YOUR-USERNAME/portfolio.git
+  git push -u origin main
+
+Replace YOUR-USERNAME with your actual GitHub username.
+
+============================================================
+STEP 5: ENABLE GITHUB PAGES
+============================================================
+1. Go to your repository on GitHub
+2. Click "Settings" tab
+3. Scroll to "Pages" in the left sidebar
+4. Under "Source" → select branch: main, folder: / (root)
+5. Click Save
+6. Wait 1-2 minutes
+7. Your URL: https://YOUR-USERNAME.github.io/portfolio/
+
+============================================================
+HOW TO ADD YOUR IMAGES
+============================================================
+Put your project images in the images/ folder:
+  images/profile.jpg    ← your profile photo
+  images/about.jpg      ← a different photo for About section
+  images/project1.jpg   ← project 1 thumbnail
+  images/project2.jpg   ← project 2 thumbnail
+  images/project3.jpg   ← project 3 thumbnail
+  ...etc.
+
+Then re-run:
+  git add .
+  git commit -m "Add project images"
+  git push
+
+============================================================
+HOW TO ADD GOOGLE DRIVE VIDEOS
+============================================================
+YES — Google Drive videos work on GitHub Pages for FREE!
+
+Step 1: Upload your video to Google Drive
+Step 2: Right-click the video → Share → Change to "Anyone with the link"
+Step 3: Copy the share link. It looks like:
+         https://drive.google.com/file/d/XXXXXXXXXXXXXXXX/view?usp=sharing
+
+Step 4: Get the FILE_ID — the long code between /d/ and /view
+         Example: 1ABC2def3GHI4jkl5MNO6pqr7STU8vwx
+
+Step 5: In index.html, find the modal with:
+         src="https://drive.google.com/file/d/FILE_ID_HERE/preview"
+         Replace FILE_ID_HERE with your actual ID
+
+For your Drive folder:
+  https://drive.google.com/drive/folders/1NXh5EEUp6agJfGXdYGTL8w2QIalQAtkQ
+  Open each video file, then do the steps above.
+
+============================================================
+HOW TO UPDATE YOUR INFO
+============================================================
+Open index.html in any text editor (Notepad, VS Code, etc.)
+
+Update these sections:
+- Your email: search for "davashisdeb@gmail.com"
+- Your phone: search for "+880 1X-XXXX-XXXX"
+- Your LinkedIn: search for "linkedin.com/in/davashisdeb"
+- Your GitHub: search for "github.com/davashisdeb"
+- Project descriptions: find the <h3> tags under each project card
+- Education details: find the timeline section
+
+After every edit, push to GitHub:
+  git add .
+  git commit -m "Update portfolio content"
+  git push
+
+Changes go live in about 1 minute.
+
+============================================================
+FILE STRUCTURE
+============================================================
+portfolio/
+├── index.html          ← Main page
+├── css/
+│   └── style.css       ← All styles + dark/light mode
+├── js/
+│   └── script.js       ← Interactivity
+├── images/
+│   ├── profile.jpg     ← Add your photo here
+│   ├── about.jpg       ← Add your photo here
+│   ├── project1.jpg    ← Add project images
+│   └── ...
+└── HOW_TO_DEPLOY.txt   ← This file
+
+============================================================
+NEED HELP?
+============================================================
+WhatsApp Davashis or ask your friends for help with git push.
+The commands above are all you need!
+============================================================
