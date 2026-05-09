@@ -1,0 +1,35 @@
+# Node
+node_modules/
+npm-debug.log*
+
+# Downloaded Drive zip archives and extracted folders (too large for git)
+My Projects*/
+*.zip
+
+# Windows shortcuts
+*.rvt
+*.dwg
+*.bak
+*.K~I
+*.K~J
+*.LOG
+*.OUT
+*.Y$$
+*.$et
+*.EDB
+*.ico
+*.xml
+
+# Windows shortcuts
+*.lnk
+
+# ETABS/CAD temp/binary files
+*.e2k
+
+# Deployment guide (internal use only)
+HOW_TO_DEPLOY.txt
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini

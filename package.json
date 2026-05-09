@@ -1,0 +1,13 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "Davashis Deb Portfolio",
+  "scripts": {
+    "start": "npx serve . -l 3000",
+    "watch": "npx chokidar-cli \"**/*.html\" \"**/*.css\" \"**/*.js\" --ignore \"node_modules/**\" -c \"echo 'Changed: {path}'\""
+  },
+  "devDependencies": {
+    "chokidar-cli": "^3.0.0",
+    "serve": "^14.2.4"
+  }
+}

@@ -148,20 +148,25 @@ function openModal(id) {
   document.body.style.overflow = 'hidden';
 }
 
+function stopModalMedia(modalEl) {
+  const video = modalEl.querySelector('video');
+  if (video) { video.pause(); video.currentTime = 0; }
+  const iframe = modalEl.querySelector('iframe');
+  if (iframe) { iframe.src = iframe.src; }
+}
+
 function closeModal(id) {
-  document.getElementById(id).classList.remove('active');
+  const modal = document.getElementById(id);
+  modal.classList.remove('active');
   document.getElementById('modalOverlay').classList.remove('active');
   document.body.style.overflow = '';
-  // Stop video if playing — reload iframe src
-  const iframe = document.querySelector(`#${id} iframe`);
-  if (iframe) { iframe.src = iframe.src; }
+  stopModalMedia(modal);
 }
 
 function closeAllModals() {
   document.querySelectorAll('.modal.active').forEach(m => {
     m.classList.remove('active');
-    const iframe = m.querySelector('iframe');
-    if (iframe) iframe.src = iframe.src;
+    stopModalMedia(m);
   });
   document.getElementById('modalOverlay').classList.remove('active');
   document.body.style.overflow = '';
