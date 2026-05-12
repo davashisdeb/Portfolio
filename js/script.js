@@ -4,75 +4,82 @@
    ========================================================= */
 
 // ---- Theme Toggle ---- //
-const themeToggle = document.getElementById('themeToggle');
-const themeIcon   = document.getElementById('themeIcon');
-const html        = document.documentElement;
+const themeToggle = document.getElementById("themeToggle");
+const themeIcon = document.getElementById("themeIcon");
+const html = document.documentElement;
 
 // Load saved theme
-const savedTheme = localStorage.getItem('theme') || 'light';
-html.setAttribute('data-theme', savedTheme);
+const savedTheme = localStorage.getItem("theme") || "light";
+html.setAttribute("data-theme", savedTheme);
 updateThemeIcon(savedTheme);
 
-themeToggle.addEventListener('click', () => {
-  const current = html.getAttribute('data-theme');
-  const next    = current === 'light' ? 'dark' : 'light';
-  html.setAttribute('data-theme', next);
-  localStorage.setItem('theme', next);
+themeToggle.addEventListener("click", () => {
+  const current = html.getAttribute("data-theme");
+  const next = current === "light" ? "dark" : "light";
+  html.setAttribute("data-theme", next);
+  localStorage.setItem("theme", next);
   updateThemeIcon(next);
 });
 
 function updateThemeIcon(theme) {
-  themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+  themeIcon.className = theme === "dark" ? "fas fa-sun" : "fas fa-moon";
 }
 
 // ---- Hamburger Menu ---- //
-const hamburger = document.getElementById('hamburger');
-const navLinks  = document.getElementById('nav-links');
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("nav-links");
 
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('open');
-  navLinks.classList.toggle('open');
+hamburger.addEventListener("click", () => {
+  hamburger.classList.toggle("open");
+  navLinks.classList.toggle("open");
 });
 
 // Close menu on link click
-navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    hamburger.classList.remove('open');
-    navLinks.classList.remove('open');
+navLinks.querySelectorAll("a").forEach((link) => {
+  link.addEventListener("click", () => {
+    hamburger.classList.remove("open");
+    navLinks.classList.remove("open");
   });
 });
 
 // ---- Navbar Scroll Effect ---- //
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 30);
+const navbar = document.getElementById("navbar");
+window.addEventListener("scroll", () => {
+  navbar.classList.toggle("scrolled", window.scrollY > 30);
   updateActiveLink();
 });
 
 // ---- Active Nav Link on Scroll ---- //
 function updateActiveLink() {
-  const sections = document.querySelectorAll('section[id]');
+  const sections = document.querySelectorAll("section[id]");
   const scrollPos = window.scrollY + 100;
-  sections.forEach(section => {
+  sections.forEach((section) => {
     const link = document.querySelector(`.nav-links a[href="#${section.id}"]`);
     if (!link) return;
-    if (section.offsetTop <= scrollPos && section.offsetTop + section.offsetHeight > scrollPos) {
-      document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-      link.classList.add('active');
+    if (
+      section.offsetTop <= scrollPos &&
+      section.offsetTop + section.offsetHeight > scrollPos
+    ) {
+      document
+        .querySelectorAll(".nav-links a")
+        .forEach((a) => a.classList.remove("active"));
+      link.classList.add("active");
     }
   });
 }
 
 // ---- Hero Typed Effect ---- //
-const typedEl = document.getElementById('heroTyped');
+const typedEl = document.getElementById("heroTyped");
 const phrases = [
-  'Civil Engineer',
-  'Structural Designer',
-  'Survey Specialist',
-  'Infrastructure Enthusiast',
-  'B.Sc. Graduate – SEC',
+  "Civil Engineer",
+  "Structural Designer",
+  "Survey Specialist",
+  "Infrastructure Enthusiast",
+  "B.Sc. Graduate – SEC",
 ];
-let phraseIdx = 0, charIdx = 0, deleting = false;
+let phraseIdx = 0,
+  charIdx = 0,
+  deleting = false;
 
 function typeEffect() {
   const current = phrases[phraseIdx];
@@ -80,7 +87,10 @@ function typeEffect() {
     typedEl.textContent = current.slice(0, charIdx + 1);
     charIdx++;
     if (charIdx === current.length) {
-      setTimeout(() => { deleting = true; typeEffect(); }, 2000);
+      setTimeout(() => {
+        deleting = true;
+        typeEffect();
+      }, 2000);
       return;
     }
   } else {
@@ -96,113 +106,156 @@ function typeEffect() {
 typeEffect();
 
 // ---- Scroll Reveal ---- //
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry, i) => {
-    if (entry.isIntersecting) {
-      // Stagger children if inside a grid
-      entry.target.style.transitionDelay = `${(entry.target.dataset.delay || 0)}ms`;
-      entry.target.classList.add('visible');
-      // Animate skill bars when they come into view
-      entry.target.querySelectorAll('.skill-fill').forEach(bar => {
-        bar.style.width = bar.dataset.width + '%';
-      });
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12 });
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        // Stagger children if inside a grid
+        entry.target.style.transitionDelay = `${entry.target.dataset.delay || 0}ms`;
+        entry.target.classList.add("visible");
+        // Animate skill bars when they come into view
+        entry.target.querySelectorAll(".skill-fill").forEach((bar) => {
+          bar.style.width = bar.dataset.width + "%";
+        });
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.12 },
+);
 
 // Stagger items inside grids
 function applyStagger(containerSelector, itemSelector) {
-  document.querySelectorAll(containerSelector).forEach(container => {
+  document.querySelectorAll(containerSelector).forEach((container) => {
     container.querySelectorAll(itemSelector).forEach((item, i) => {
       item.dataset.delay = i * 100;
     });
   });
 }
-applyStagger('.projects-grid', '.project-card');
-applyStagger('.skills-grid',   '.skills-block');
-applyStagger('.timeline',      '.timeline-item');
+applyStagger(".projects-grid", ".project-card");
+applyStagger(".skills-grid", ".skills-block");
+applyStagger(".timeline", ".timeline-item");
 
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+document
+  .querySelectorAll(".reveal")
+  .forEach((el) => revealObserver.observe(el));
 
 // ---- Project Filter ---- //
-const filterBtns   = document.querySelectorAll('.filter-btn');
-const projectCards = document.querySelectorAll('.project-card');
+const filterBtns = document.querySelectorAll(".filter-btn");
+const projectCards = document.querySelectorAll(".project-card");
 
-filterBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    filterBtns.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
+filterBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    filterBtns.forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
     const filter = btn.dataset.filter;
-    projectCards.forEach(card => {
-      const show = filter === 'all' || card.dataset.category === filter;
-      card.classList.toggle('hidden', !show);
+    projectCards.forEach((card) => {
+      const show = filter === "all" || card.dataset.category === filter;
+      card.classList.toggle("hidden", !show);
     });
   });
 });
 
 // ---- Modal ---- //
+const modalGalleries = {};
+
+function initModalGalleries() {
+  document.querySelectorAll("[data-modal-gallery]").forEach((gallery) => {
+    const modalId = gallery.dataset.modalGallery;
+    const slides = Array.from(gallery.querySelectorAll("[data-modal-slide]"));
+    if (!slides.length) return;
+    modalGalleries[modalId] = { gallery, slides, index: 0 };
+    setModalSlide(modalId, 0);
+  });
+}
+
+function setModalSlide(modalId, index) {
+  const state = modalGalleries[modalId];
+  if (!state) return;
+  const total = state.slides.length;
+  state.index = ((index % total) + total) % total;
+  state.slides.forEach((slide, slideIndex) => {
+    slide.classList.toggle("is-active", slideIndex === state.index);
+  });
+}
+
+function changeModalSlide(modalId, step) {
+  const state = modalGalleries[modalId];
+  if (!state) return;
+  setModalSlide(modalId, state.index + step);
+}
+
 function openModal(id) {
-  document.getElementById(id).classList.add('active');
-  document.getElementById('modalOverlay').classList.add('active');
-  document.body.style.overflow = 'hidden';
+  setModalSlide(id, 0);
+  document.getElementById(id).classList.add("active");
+  document.getElementById("modalOverlay").classList.add("active");
+  document.body.style.overflow = "hidden";
 }
 
 function stopModalMedia(modalEl) {
-  const video = modalEl.querySelector('video');
-  if (video) { video.pause(); video.currentTime = 0; }
-  const iframe = modalEl.querySelector('iframe');
-  if (iframe) { iframe.src = iframe.src; }
+  const video = modalEl.querySelector("video");
+  if (video) {
+    video.pause();
+    video.currentTime = 0;
+  }
+  const iframe = modalEl.querySelector("iframe");
+  if (iframe) {
+    iframe.src = iframe.src;
+  }
 }
 
 function closeModal(id) {
   const modal = document.getElementById(id);
-  modal.classList.remove('active');
-  document.getElementById('modalOverlay').classList.remove('active');
-  document.body.style.overflow = '';
+  modal.classList.remove("active");
+  document.getElementById("modalOverlay").classList.remove("active");
+  document.body.style.overflow = "";
   stopModalMedia(modal);
 }
 
 function closeAllModals() {
-  document.querySelectorAll('.modal.active').forEach(m => {
-    m.classList.remove('active');
+  document.querySelectorAll(".modal.active").forEach((m) => {
+    m.classList.remove("active");
     stopModalMedia(m);
   });
-  document.getElementById('modalOverlay').classList.remove('active');
-  document.body.style.overflow = '';
+  document.getElementById("modalOverlay").classList.remove("active");
+  document.body.style.overflow = "";
 }
 
 // Close modal on Escape key
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') closeAllModals();
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeAllModals();
 });
 
-// ---- Contact Form (mailto fallback) ---- //
-const form       = document.getElementById('contactForm');
-const formStatus = document.getElementById('formStatus');
+initModalGalleries();
 
-form.addEventListener('submit', (e) => {
+// ---- Contact Form (mailto fallback) ---- //
+const form = document.getElementById("contactForm");
+const formStatus = document.getElementById("formStatus");
+
+form.addEventListener("submit", (e) => {
   e.preventDefault();
-  const name    = document.getElementById('formName').value.trim();
-  const email   = document.getElementById('formEmail').value.trim();
-  const subject = document.getElementById('formSubject').value.trim();
-  const message = document.getElementById('formMessage').value.trim();
+  const name = document.getElementById("formName").value.trim();
+  const email = document.getElementById("formEmail").value.trim();
+  const subject = document.getElementById("formSubject").value.trim();
+  const message = document.getElementById("formMessage").value.trim();
 
   // Build mailto link
-  const mailtoLink = `mailto:davashisdeb@gmail.com?subject=${encodeURIComponent(subject || 'Portfolio Contact')}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`)}`;
+  const mailtoLink = `mailto:davashisdeb@gmail.com?subject=${encodeURIComponent(subject || "Portfolio Contact")}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`)}`;
   window.location.href = mailtoLink;
 
-  formStatus.textContent = '✓ Opening your email client...';
-  setTimeout(() => { formStatus.textContent = ''; }, 4000);
+  formStatus.textContent = "✓ Opening your email client...";
+  setTimeout(() => {
+    formStatus.textContent = "";
+  }, 4000);
 });
 
 // ---- Smooth anchor scroll for all internal links ---- //
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    const target = document.querySelector(this.getAttribute('href'));
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener("click", function (e) {
+    const target = document.querySelector(this.getAttribute("href"));
     if (target) {
       e.preventDefault();
-      window.scrollTo({ top: target.offsetTop - 68, behavior: 'smooth' });
+      window.scrollTo({ top: target.offsetTop - 68, behavior: "smooth" });
     }
   });
 });
