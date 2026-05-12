@@ -72,6 +72,7 @@ function updateActiveLink() {
 const typedEl = document.getElementById("heroTyped");
 const phrases = [
   "Civil Engineer",
+  "Geotechnical Engineering Researcher",
   "Structural Designer",
   "Survey Specialist",
   "Infrastructure Enthusiast",
