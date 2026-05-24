@@ -70,14 +70,7 @@ function updateActiveLink() {
 
 // ---- Hero Typed Effect ---- //
 const typedEl = document.getElementById("heroTyped");
-const phrases = [
-  "Civil Engineer",
-  "Geotechnical Engineering Researcher",
-  "Structural Designer",
-  "Survey Specialist",
-  "Infrastructure Enthusiast",
-  "B.Sc. Graduate – SEC",
-];
+const phrases = ["Geotechnical Engineering Researcher"];
 let phraseIdx = 0,
   charIdx = 0,
   deleting = false;

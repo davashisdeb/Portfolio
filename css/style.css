@@ -829,7 +829,7 @@ ul {
    ============================================================ */
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr;
   gap: 2.5rem;
   align-items: start;
 }
@@ -844,25 +844,21 @@ ul {
   height: 100%;
   object-fit: cover;
 }
-.about-image {
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  max-width: 460px;
-  width: 100%;
-  justify-self: center;
-}
-
-.about-image .btn {
-  align-self: center;
-}
-
-.about-text {
+.about-content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
+}
+
+.about-top-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.research-card {
+  grid-column: 1 / -1;
+  padding: 1.25rem 1.35rem;
 }
 
 .about-text h3 {
@@ -977,9 +973,62 @@ ul {
   margin: 0;
 }
 
-/* ---- Research Focus Section ---- */
-.research-card {
-  padding: 1.25rem 1.35rem;
+.education-highlight {
+  background: linear-gradient(180deg, rgba(0, 51, 102, 0.04), transparent);
+  border-radius: 14px;
+  padding: 1rem;
+  border: 1px solid rgba(0, 51, 102, 0.08);
+}
+
+[data-theme="dark"] .education-highlight {
+  background: linear-gradient(180deg, rgba(74, 158, 221, 0.08), transparent);
+  border-color: rgba(106, 184, 245, 0.14);
+}
+
+.education-highlight .education-header h4 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.degree-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+.education-location {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.skills-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.95rem;
+}
+
+.skills-tags .tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.28rem 0.7rem;
+  border-radius: 999px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 0.75rem;
+  font-weight: 500;
 }
 
 .research-text {
@@ -1897,9 +1946,8 @@ ul {
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
-  .about-image {
-    order: -1;
-    max-width: 100%;
+  .about-top-grid {
+    grid-template-columns: 1fr;
   }
   .about-info {
     grid-template-columns: 1fr;
@@ -2085,15 +2133,18 @@ ul {
   .contact-info h3 {
     font-size: 1.25rem;
   }
+  .about-content {
+    gap: 1.1rem;
+  }
+  .about-top-grid {
+    gap: 1.1rem;
+  }
   .about-info {
     gap: 0.45rem;
   }
   .info-item {
     font-size: 0.85rem;
     padding: 0.45rem 0;
-  }
-  .about-image {
-    max-width: 100%;
   }
   .contact-card {
     padding: 1.35rem 1.1rem;
