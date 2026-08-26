@@ -158,7 +158,7 @@
                 </div>
                 <div class="contact-item">
                   <i class="fas fa-phone"></i>
-                  <a href="tel:+8801624937386">+880 1624937386</a>
+                  <a href="tel:+8801778962372">+880 1778962372</a>
                 </div>
                 <div class="contact-item">
                   <i class="fas fa-envelope"></i>
@@ -172,7 +172,7 @@
                     href="https://www.linkedin.com/in/davashis-deb/"
                     target="_blank"
                     rel="noopener"
-                    >LinkedIn Profile</a
+                    >Davashis Deb</a
                   >
                 </div>
                 <div class="contact-item">
@@ -181,7 +181,7 @@
                     href="https://scholar.google.com/citations?user=lZ7p_ZAAAAAJ&hl=en"
                     target="_blank"
                     rel="noopener"
-                    >Google Scholar Profile</a
+                    >Davashis Deb</a
                   >
                 </div>
               </div>
@@ -222,7 +222,7 @@
                     <div class="skills-tags">
                       <span class="tag">Geotechnical</span>
                       <span class="tag">Soil Stabilization</span>
-                      <span class="tag">Finite Element (Plaxis 3D)</span>
+                      <span class="tag">Construction & Demolition Waste</span>
                     </div>
                   </div>
                   <div class="education-item">
@@ -578,18 +578,16 @@
           <!-- Project 02 — Rooftop Design of Existing Building (Sep 2023) -->
           <div class="project-card reveal" data-category="residential">
             <div class="project-media">
-              <img
-                src="images/p02_1.png"
-                alt="Rooftop Design of Existing Building"
-                onerror="
-                  this.src =
-                    'https://via.placeholder.com/600x380/003366/ffffff?text=Project+02'
-                "
-              />
-              <div class="project-overlay">
-                <button class="project-open" onclick="openModal('modal02')">
-                  <i class="fas fa-expand"></i> View Details
-                </button>
+              <div class="project-video-thumb" onclick="openModal('modal02')">
+                <img
+                  src="images/p02_1.png"
+                  alt="Rooftop Design of Existing Building"
+                  onerror="
+                    this.src =
+                      'https://via.placeholder.com/600x380/003366/ffffff?text=Project+02'
+                  "
+                />
+                <div class="video-play-btn"><i class="fas fa-play"></i></div>
               </div>
             </div>
             <div class="project-info">
@@ -637,7 +635,7 @@
           <div class="project-card reveal" data-category="residential">
             <div class="project-media">
               <img
-                src="images/p04_thumb.png"
+                src="images/p04_1.png"
                 alt="Single Storey Tin Shade House"
                 onerror="
                   this.src =
@@ -755,18 +753,16 @@
           <!-- Project 08 — Kitchen Interior (Sep 2024) -->
           <div class="project-card reveal" data-category="interior">
             <div class="project-media">
-              <img
-                src="images/p08_thumb.png"
-                alt="Kitchen Interior Design"
-                onerror="
-                  this.src =
-                    'https://via.placeholder.com/600x380/003366/ffffff?text=Project+08'
-                "
-              />
-              <div class="project-overlay">
-                <button class="project-open" onclick="openModal('modal08')">
-                  <i class="fas fa-expand"></i> View Details
-                </button>
+              <div class="project-video-thumb" onclick="openModal('modal08')">
+                <img
+                  src="images/p08_thumb.png"
+                  alt="Kitchen Interior Design"
+                  onerror="
+                    this.src =
+                      'https://via.placeholder.com/600x380/003366/ffffff?text=Project+08'
+                  "
+                />
+                <div class="video-play-btn"><i class="fas fa-play"></i></div>
               </div>
             </div>
             <div class="project-info">
@@ -1114,37 +1110,6 @@
               </div>
             </div>
           </div>
-
-          <!-- ETABS — RCC Structural Design Internship -->
-          <div class="project-card reveal" data-category="structural">
-            <div class="project-media">
-              <img
-                src="images/etabs_thumb.jpg"
-                alt="RCC Structural Design ETABS"
-                onerror="
-                  this.src =
-                    'https://via.placeholder.com/600x380/003366/ffffff?text=ETABS+Internship'
-                "
-              />
-              <div class="project-overlay">
-                <button class="project-open" onclick="openModal('modalEtabs')">
-                  <i class="fas fa-expand"></i> View Details
-                </button>
-              </div>
-            </div>
-            <div class="project-info">
-              <span class="project-category">Structural · 2024</span>
-              <h3>RCC Structural Design – DDS Internship</h3>
-              <p>
-                Hands-on RCC structural design using ETABS at Design &
-                Development Solution (DDS), including load analysis and BNBC
-                compliance checks.
-              </p>
-              <div class="project-tags">
-                <span>Created: 2024</span>
-              </div>
-            </div>
-          </div>
         </div>
         <!-- /projects-grid -->
       </div>
@@ -1401,14 +1366,49 @@
         <button class="modal-close" onclick="closeModal('modal08')">
           <i class="fas fa-times"></i>
         </button>
-        <img
-          src="images/p08_thumb.png"
-          alt="Kitchen Interior Design"
-          onerror="
-            this.src =
-              'https://via.placeholder.com/900x500/003366/ffffff?text=Project+08'
-          "
-        />
+        <div class="modal-gallery" data-modal-gallery="modal08">
+          <button
+            class="modal-gallery-arrow modal-gallery-prev"
+            type="button"
+            aria-label="Previous media"
+            onclick="changeModalSlide('modal08', -1)"
+          >
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <div
+            class="modal-media is-active"
+            data-modal-slide
+            data-media-type="video"
+          >
+            <iframe
+              src="https://drive.google.com/file/d/1yEljEOHN0SXNajHYKbqKc093dZGo1HAn/preview"
+              width="100%"
+              height="420"
+              allow="autoplay"
+              allowfullscreen
+              style="border: none; border-radius: 8px"
+            >
+            </iframe>
+          </div>
+          <div class="modal-media" data-modal-slide data-media-type="image">
+            <img
+              src="images/p08_thumb.png"
+              alt="Kitchen Interior Design"
+              onerror="
+                this.src =
+                  'https://via.placeholder.com/900x500/003366/ffffff?text=Project+08'
+              "
+            />
+          </div>
+          <button
+            class="modal-gallery-arrow modal-gallery-next"
+            type="button"
+            aria-label="Next media"
+            onclick="changeModalSlide('modal08', 1)"
+          >
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
         <h3>Kitchen Interior Design</h3>
         <p>
           <strong>Location:</strong> Shibganj, Sylhet, Bangladesh<br />
@@ -1969,36 +1969,6 @@
       </div>
     </div>
 
-    <!-- Modal ETABS — DDS Internship -->
-    <div class="modal" id="modalEtabs">
-      <div class="modal-content">
-        <button class="modal-close" onclick="closeModal('modalEtabs')">
-          <i class="fas fa-times"></i>
-        </button>
-        <img
-          src="images/etabs_thumb.jpg"
-          alt="ETABS Internship"
-          onerror="
-            this.src =
-              'https://via.placeholder.com/900x500/003366/ffffff?text=ETABS+Internship'
-          "
-        />
-        <h3>RCC Structural Design – DDS Internship</h3>
-        <p>
-          <strong>Organisation:</strong> Design & Development Solution (DDS)<br />
-          <strong>Year:</strong> 2024<br /><br />
-          Gained practical experience in structural design using ETABS software
-          during internship. Work included load analysis, structural modelling
-          of an RCC frame building, and design verification in accordance with
-          BNBC standards. Completed with a certificate from DDS.
-        </p>
-        <div class="project-tags">
-          <span>ETABS</span><span>RCC Design</span><span>BNBC</span
-          ><span>Structural Analysis</span>
-        </div>
-      </div>
-    </div>
-
     <!-- Modal Overlay -->
     <div
       class="modal-overlay"
@@ -2024,8 +1994,19 @@
           <div
             class="modal-media is-active"
             data-modal-slide
-            data-media-type="image"
+            data-media-type="video"
           >
+            <iframe
+              src="https://drive.google.com/file/d/1GCThyxldlAJhc8TRCNE3LRL9Ig_tt8Y2/preview"
+              width="100%"
+              height="420"
+              allow="autoplay"
+              allowfullscreen
+              style="border: none; border-radius: 8px"
+            >
+            </iframe>
+          </div>
+          <div class="modal-media" data-modal-slide data-media-type="image">
             <img src="images/p02_1.png" alt="Project 02 image 1" />
           </div>
           <div class="modal-media" data-modal-slide data-media-type="image">
