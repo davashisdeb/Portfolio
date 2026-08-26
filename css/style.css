@@ -484,6 +484,173 @@ ul {
   }
 }
 
+/* ---- Certifications ---- */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.cert-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--primary);
+  border-radius: 16px;
+  padding: 1.05rem 1rem 1rem;
+  box-shadow: var(--card-shadow);
+  min-height: 210px;
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+[data-theme="dark"] .cert-card {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+}
+
+.cert-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0, 51, 102, 0.14);
+}
+
+.cert-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+.cert-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: #fff;
+  background: var(--primary);
+  flex-shrink: 0;
+}
+
+.cert-card h3 {
+  font-size: 0.98rem;
+  line-height: 1.45;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 0;
+}
+
+.cert-issuer {
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: var(--text);
+  margin: 0;
+}
+
+.cert-date {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--text-muted);
+  margin: auto 0 0;
+  padding-top: 0.3rem;
+}
+
+.cert-badge {
+  display: inline-flex;
+  padding: 0.28rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.badge-training {
+  background: #0ea5e9;
+}
+.cert-training {
+  border-left-color: #0ea5e9;
+}
+.cert-training .cert-icon {
+  background: #0ea5e9;
+}
+
+.badge-seminar {
+  background: #6b6ef9;
+}
+.cert-seminar {
+  border-left-color: #6b6ef9;
+}
+.cert-seminar .cert-icon {
+  background: #6b6ef9;
+}
+
+.badge-award {
+  background: #22c55e;
+}
+.cert-award {
+  border-left-color: #22c55e;
+}
+.cert-award .cert-icon {
+  background: #22c55e;
+}
+
+.badge-competition {
+  background: #0d9488;
+}
+.cert-competition {
+  border-left-color: #0d9488;
+}
+.cert-competition .cert-icon {
+  background: #0d9488;
+}
+
+.cert-conference {
+  border-left-color: #f59e0b;
+}
+.cert-conference .cert-icon {
+  background: #f59e0b;
+}
+
+@media (max-width: 1100px) {
+  .cert-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .cert-card {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 700px) {
+  .cert-grid {
+    grid-template-columns: 1fr;
+  }
+  .cert-card {
+    padding: 0.95rem 0.9rem;
+  }
+  .cert-card h3 {
+    font-size: 0.95rem;
+  }
+}
+
+/* Keep the nav on one line now that it carries an extra link */
+@media (min-width: 701px) and (max-width: 1150px) {
+  .nav-links {
+    gap: 1.15rem;
+  }
+  .nav-links a {
+    font-size: 0.82rem;
+  }
+}
+
 .hamburger {
   display: none;
   flex-direction: column;
@@ -1100,10 +1267,19 @@ ul {
 }
 
 .contact-item a {
+  display: inline-block;
   color: var(--text);
   text-decoration: none;
-  transition: all var(--transition);
   font-weight: 500;
+  padding: 0.2rem 0.55rem;
+  margin: -0.2rem -0.55rem;
+  border-radius: 8px;
+  transform-origin: left center;
+  will-change: transform;
+  transition:
+    color var(--transition),
+    background var(--transition),
+    transform 0.3s cubic-bezier(0.34, 1.4, 0.64, 1);
 }
 
 .contact-card .contact-item a {
@@ -1122,10 +1298,13 @@ ul {
 .contact-item a:hover {
   color: var(--primary);
   text-decoration: none;
+  background: rgba(0, 51, 102, 0.09);
+  transform: scale(1.06);
 }
 
 [data-theme="dark"] .contact-item a:hover {
   color: #8cc8ff;
+  background: rgba(106, 184, 245, 0.16);
 }
 
 .contact-item span {
@@ -1748,10 +1927,6 @@ ul {
 .contact-item p {
   font-size: 0.95rem;
   color: var(--text);
-  transition: color var(--transition);
-}
-.contact-item a:hover {
-  color: var(--primary);
 }
 
 .contact-social {
