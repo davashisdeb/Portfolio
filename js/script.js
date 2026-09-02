@@ -169,8 +169,21 @@ function setModalSlide(modalId, index) {
   const total = state.slides.length;
   state.index = ((index % total) + total) % total;
   state.slides.forEach((slide, slideIndex) => {
-    slide.classList.toggle("is-active", slideIndex === state.index);
+    const isActive = slideIndex === state.index;
+    slide.classList.toggle("is-active", isActive);
+    if (!isActive) stopSlideMedia(slide);
   });
+}
+
+function stopSlideMedia(slide) {
+  const video = slide.querySelector("video");
+  if (video) {
+    video.pause();
+    video.currentTime = 0;
+  }
+
+  const iframe = slide.querySelector("iframe");
+  if (iframe) iframe.src = iframe.src;
 }
 
 function changeModalSlide(modalId, step) {
