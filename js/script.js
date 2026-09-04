@@ -126,6 +126,32 @@ function applyStagger(containerSelector, itemSelector) {
     });
   });
 }
+
+const projectsGrid = document.getElementById("projectsGrid");
+if (projectsGrid) {
+  Array.from(projectsGrid.children)
+    .reverse()
+    .forEach((project) => projectsGrid.appendChild(project));
+}
+
+const sectionOrder = [
+  "about",
+  "research-interests",
+  "research",
+  "projects",
+  "experience",
+  "skills",
+  "certifications",
+  "contact",
+];
+const firstModal = document.querySelector(".modal");
+if (firstModal) {
+  sectionOrder.forEach((sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (section) firstModal.before(section);
+  });
+}
+
 applyStagger(".projects-grid", ".project-card");
 applyStagger(".skills-grid", ".skills-block");
 applyStagger(".timeline", ".timeline-item");
@@ -149,6 +175,42 @@ filterBtns.forEach((btn) => {
     });
   });
 });
+
+// ---- Certifications Carousel ---- //
+const certViewport = document.getElementById("certViewport");
+const certPrev = document.getElementById("certPrev");
+const certNext = document.getElementById("certNext");
+const certProgressBar = document.getElementById("certProgressBar");
+
+if (certViewport && certPrev && certNext && certProgressBar) {
+  function updateCertCarousel() {
+    const maxScroll = certViewport.scrollWidth - certViewport.clientWidth;
+    const hasOverflow = maxScroll > 1;
+    const progressWidth = hasOverflow
+      ? Math.max(16.67, (certViewport.clientWidth / certViewport.scrollWidth) * 100)
+      : 100;
+    const progressPosition = hasOverflow
+      ? (certViewport.scrollLeft / maxScroll) * (100 - progressWidth)
+      : 0;
+
+    certPrev.disabled = !hasOverflow || certViewport.scrollLeft <= 1;
+    certNext.disabled = !hasOverflow || certViewport.scrollLeft >= maxScroll - 1;
+    certProgressBar.style.width = `${progressWidth}%`;
+    certProgressBar.style.left = `${progressPosition}%`;
+  }
+
+  function scrollCertifications(direction) {
+    const card = certViewport.querySelector(".cert-card");
+    const distance = card ? card.getBoundingClientRect().width + 16 : certViewport.clientWidth;
+    certViewport.scrollBy({ left: distance * direction, behavior: "smooth" });
+  }
+
+  certPrev.addEventListener("click", () => scrollCertifications(-1));
+  certNext.addEventListener("click", () => scrollCertifications(1));
+  certViewport.addEventListener("scroll", updateCertCarousel, { passive: true });
+  window.addEventListener("resize", updateCertCarousel);
+  updateCertCarousel();
+}
 
 // ---- Modal ---- //
 const modalGalleries = {};
@@ -205,10 +267,9 @@ function stopModalMedia(modalEl) {
     video.pause();
     video.currentTime = 0;
   }
-  const iframe = modalEl.querySelector("iframe");
-  if (iframe) {
+  modalEl.querySelectorAll("iframe").forEach((iframe) => {
     iframe.src = iframe.src;
-  }
+  });
 }
 
 function closeModal(id) {
